@@ -213,7 +213,7 @@ public class QuestionActivity extends Activity implements OnClickListener {
 						ntw = new NetworkITW(map, questionHandler);
 						ntw.execute();
 					}
-					// 존재하는 질문 데이터가 없을 경우 질문을 받아오
+					// 존재하는 질문 데이터가 없을 경우 질문을 받아옴
 					else {
 						if (pd != null) {
 							pd.dismiss();
@@ -295,6 +295,9 @@ public class QuestionActivity extends Activity implements OnClickListener {
 						icheckedList= new ArrayList<Integer>();
 						qiListAdapter.notifyDataSetChanged();
 						imageListView.invalidate();
+						
+						roundSpinner.setSelection(0); // Round default 는 4강
+						typeSpinner.setSelection(1);	// Type Default는 공개
 					}
 				}
 				// 질문 수정
@@ -651,6 +654,83 @@ public class QuestionActivity extends Activity implements OnClickListener {
 			return 0;
 		}
 
+
+		private void showBox(RelativeLayout rl, ImageView iv, CheckBox ck, int curIndex){
+			rl.setOnClickListener(null);
+			iv.setOnClickListener(null);
+			if (iList.size() <= curIndex) {
+				rl.setVisibility(View.INVISIBLE);
+			}
+			// 데이터가 존재할 경우
+			else if (iList.get(curIndex).iUrl != null) {
+				rl.setVisibility(View.VISIBLE);
+				rl.setBackgroundResource(android.R.color.transparent);
+				ck.setTag("" + iList.get(curIndex).iUid);
+				boolean flag1 = false;
+				for (int i = 0; i < icheckedList.size(); i++) {
+					if (icheckedList.get(i).intValue() == iList.get(curIndex).iUid) {
+						flag1 = true;
+						break;
+					}
+				}
+				ck.setChecked(flag1);
+				// checkbox 확인
+				final int iUid1 = iList.get(curIndex).iUid;
+				ck.setVisibility(View.VISIBLE);
+				ck.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						boolean isChecked=((CheckBox)v).isChecked();
+						if (isChecked) {
+							boolean flag = false;
+							for (int i = 0; i < icheckedList.size(); i++) {
+								if (icheckedList.get(i).intValue() == iUid1) {
+									flag = true;
+								}
+							}
+							if (flag == false)
+								icheckedList.add(iUid1);
+						} else {
+							for (int i = 0; i < icheckedList.size(); i++) {
+								if (icheckedList.get(i).intValue() == iUid1) {
+									icheckedList.remove(i);
+								}
+							}
+						}
+						
+					}
+				});
+				iv.setTag("" + iList.get(curIndex).iUid);
+				iv.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						removeImage(iUid1);
+					}
+				});
+				BitmapHandlerQuestion bhm = new BitmapHandlerQuestion(iList.get(curIndex).iUrl, iv, true, iList.get(curIndex).iUid);
+				bhm.execute();
+			}
+			// 데이터가 존재하지 않을 경우
+			else {
+				rl.setVisibility(View.VISIBLE);
+				rl.setBackgroundResource(R.drawable.dot_border);
+				rl.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						registImage();
+					}
+				});
+				rl.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						registImage();
+					}
+				});
+				iv.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_photo));
+				ck.setVisibility(View.INVISIBLE);
+			}
+		}
+		
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder vh = null;
@@ -670,237 +750,9 @@ public class QuestionActivity extends Activity implements OnClickListener {
 			}
 			vh = (ViewHolder) convertView.getTag();
 			int curIndex = position * 3;
-
-			String a="";
-			for (int i = 0; i < icheckedList.size(); i++) {
-				a+=","+icheckedList.get(i).intValue();
-			}
-			Log.e("pkch", "out:"+a);
-			// slot 갯수 초과 했을 경우
-			vh.rl1.setOnClickListener(null);
-			vh.iv1.setOnClickListener(null);
-			if (iList.size() <= curIndex) {
-				vh.rl1.setVisibility(View.INVISIBLE);
-			}
-			// 데이터가 존재할 경우
-			else if (iList.get(curIndex).iUrl != null) {
-				vh.rl1.setVisibility(View.VISIBLE);
-				vh.rl1.setBackgroundResource(android.R.color.transparent);
-				vh.ck1.setTag("" + iList.get(curIndex).iUid);
-				boolean flag1 = false;
-				for (int i = 0; i < icheckedList.size(); i++) {
-					if (icheckedList.get(i).intValue() == iList.get(curIndex).iUid) {
-						flag1 = true;
-						break;
-					}
-				}
-				vh.ck1.setChecked(flag1);
-				// checkbox 확인
-				final int iUid1 = iList.get(curIndex).iUid;
-				vh.ck1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						if (isChecked) {
-							boolean flag = false;
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid1) {
-									flag = true;
-								}
-							}
-							if (flag == false)
-								icheckedList.add(iUid1);
-						} else {
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid1) {
-									icheckedList.remove(i);
-								}
-							}
-						}
-						Log.e("pkch",isChecked+" : "+iUid1);
-					}
-				});
-				vh.ck1.setVisibility(View.VISIBLE);
-				vh.iv1.setTag("" + iList.get(curIndex).iUid);
-				vh.iv1.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						removeImage(iUid1);
-					}
-				});
-				BitmapHandlerQuestion bhm = new BitmapHandlerQuestion(iList.get(curIndex).iUrl, vh.iv1, true, iList.get(curIndex).iUid);
-				bhm.execute();
-			}
-			// 데이터가 존재하지 않을 경우
-			else {
-				vh.rl1.setVisibility(View.VISIBLE);
-				vh.rl1.setBackgroundResource(R.drawable.dot_border);
-				vh.rl1.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv1.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv1.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_photo));
-				vh.ck1.setVisibility(View.INVISIBLE);
-			}
-			curIndex++;
-
-			// slot 갯수 초과 했을 경우
-			vh.rl2.setOnClickListener(null);
-			vh.iv2.setOnClickListener(null);
-			if (iList.size() <= curIndex) {
-				vh.rl2.setVisibility(View.INVISIBLE);
-			}
-			// 데이터가 존재할 경우
-			else if (iList.get(curIndex).iUrl != null) {
-				vh.rl2.setVisibility(View.VISIBLE);
-				vh.rl2.setBackgroundResource(android.R.color.transparent);
-				vh.ck2.setTag("" + iList.get(curIndex).iUid);
-				vh.ck2.setVisibility(View.VISIBLE);
-				boolean flag1 = false;
-				for (int i = 0; i < icheckedList.size(); i++) {
-					if (icheckedList.get(i).intValue() == iList.get(curIndex).iUid) {
-						flag1 = true;
-						break;
-					}
-				}
-				vh.ck2.setChecked(flag1);
-				// checkbox 확인
-				final int iUid2 = iList.get(curIndex).iUid;
-				vh.ck2.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						if (isChecked) {
-							boolean flag = false;
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid2) {
-									flag = true;
-								}
-							}
-							if (flag == false)
-								icheckedList.add(iUid2);
-						} else {
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid2) {
-									icheckedList.remove(i);
-								}
-							}
-						}
-						Log.e("pkch",isChecked+" : "+iUid2);
-					}
-				});
-				vh.iv2.setTag("" + iList.get(curIndex).iUid);
-				vh.iv2.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						removeImage(iUid2);
-					}
-				});
-				BitmapHandlerQuestion bhm = new BitmapHandlerQuestion(iList.get(curIndex).iUrl, vh.iv2, true, iList.get(curIndex).iUid);
-				bhm.execute();
-			}
-			// 데이터가 존재하지 않을 경우
-			else {
-				vh.rl2.setVisibility(View.VISIBLE);
-				vh.rl2.setBackgroundResource(R.drawable.dot_border);
-				vh.rl2.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv2.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv2.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_photo));
-				vh.ck2.setVisibility(View.INVISIBLE);
-			}
-			curIndex++;
-
-			// slot 갯수 초과 했을 경우
-			vh.rl3.setOnClickListener(null);
-			vh.iv3.setOnClickListener(null);
-			if (iList.size() <= curIndex) {
-				vh.rl3.setVisibility(View.INVISIBLE);
-			}
-			// 데이터가 존재할 경우
-			else if (iList.get(curIndex).iUrl != null) {
-				vh.rl3.setVisibility(View.VISIBLE);
-				vh.rl3.setBackgroundResource(android.R.color.transparent);
-				vh.ck3.setTag("" + iList.get(curIndex).iUid);
-				vh.ck3.setVisibility(View.VISIBLE);
-				boolean flag1 = false;
-				for (int i = 0; i < icheckedList.size(); i++) {
-					if (icheckedList.get(i).intValue() == iList.get(curIndex).iUid) {
-						flag1 = true;
-						break;
-					}
-				}
-				vh.ck3.setChecked(flag1);
-				// checkbox 확인
-				final int iUid3 = iList.get(curIndex).iUid;
-				vh.ck3.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						if (isChecked) {
-							boolean flag = false;
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid3) {
-									flag = true;
-								}
-							}
-							if (flag == false){
-								icheckedList.add(iUid3);
-								Log.e("pkch",iUid3+" added ");
-							}
-						} else {
-							for (int i = 0; i < icheckedList.size(); i++) {
-								if (icheckedList.get(i).intValue() == iUid3) {
-									Log.e("pkch",icheckedList.get(i).intValue()+" removed");
-									icheckedList.remove(i);
-								}
-							}
-						}
-					}
-				});
-				vh.iv3.setTag("" + iList.get(curIndex).iUid);
-				vh.iv3.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						removeImage(iUid3);
-					}
-				});
-				BitmapHandlerQuestion bhm = new BitmapHandlerQuestion(iList.get(curIndex).iUrl, vh.iv3, true, iList.get(curIndex).iUid);
-				bhm.execute();
-			}
-			// 데이터가 존재하지 않을 경우
-			else {
-				vh.rl3.setVisibility(View.VISIBLE);
-				vh.rl3.setBackgroundResource(R.drawable.dot_border);
-				vh.rl3.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv3.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						registImage();
-					}
-				});
-				vh.iv3.setImageBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.ic_photo));
-				vh.ck3.setVisibility(View.INVISIBLE);
-			}
+			showBox(vh.rl1, vh.iv1, vh.ck1, curIndex);
+			showBox(vh.rl2, vh.iv2, vh.ck2, curIndex+1);
+			showBox(vh.rl3, vh.iv3, vh.ck3, curIndex+2);
 			return convertView;
 		}
 
