@@ -1,0 +1,60 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="65dp" >
+
+    <RelativeLayout
+        android:id="@+id/mqr_rl"
+        android:layout_width="match_parent"
+        android:layout_height="65dp" >
+
+        <TextView
+            android:id="@+id/mqr_title"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <ImageView
+            android:id="@+id/mqr_profile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/mqr_title"
+            android:background="@drawable/worldmap" />
+
+        <TextView
+            android:id="@+id/mqr_name"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="3dp"
+            android:layout_toRightOf="@id/mqr_profile"
+            android:gravity="center_vertical"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/mqr_tempiv"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/mqr_profile" />
+
+        <ImageView
+            android:id="@+id/mqr_tempiv2"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/mqr_tempiv" />
+    </RelativeLayout>
+
+</RelativeLayout>
