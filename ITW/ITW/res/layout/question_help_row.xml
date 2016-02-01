@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#afafaf" >
+
+    <ImageView
+        android:id="@+id/qhr_iv"
+        android:layout_width="480dp"
+        android:layout_height="275dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/h1_1" />
+
+    <TextView
+        android:id="@+id/qhr_tv"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#89ffffff"
+        android:gravity="center_vertical|center_horizontal"
+        android:src="@drawable/view_border"
+        android:textColor="#000000" />
+
+    <ImageView
+        android:id="@+id/qhr_cancle_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/qhr_iv"
+        android:layout_toRightOf="@+id/qhr_iv"
+        android:background="#ffffff"
+        android:src="@drawable/ic_cancle" />
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- General -->
+    <string name="app_name">이상형 월드컵</string>
+    <string name="app_id">573446772733849</string>
+    <string name="loading_msg">데이터 로딩 중입니다..</string>
+    <string name="main_go">Go! Worldcup!</string>
+    <string name="main_rank">랭킹</string>
+    <string name="main_question">내 맘대로!</string>
+    <string name="main_login">  Log in</string>
+    <string name="main_logout">  Log out</string>
+    <string name="friend_loading_fail">친구들 목록을 가지고 오는데 실패 하였습니다.</string>
+    <string name="action_settings">설정</string>
+    <string name="login_progress_msg">로그인 중입니다... :)</string>
+    <string name="go_default_title">질문을 선택하신 후에 이미지를 클릭하시면 시작됩니다.</string>
+    <string name="comment_reg_btn">등록</string>
+    <string name="comment_remove_alert_msg">댓글을 삭제 하시겠습니까?</string>
+    <string name="comment_total_txt">전체 : </string>
+    <string name="comment_reg_empty_msg">댓글을 입력해 주세요! :(</string>
+    <string name="comment_reg_complete_msg">댓글을 저장하였습니다. :)</string>
+    <string name="comment_reg_fail_msg">댓글 저장에 실패하였습니다! :(</string>
+    <string name="comment_remove_complete_msg">댓글을 삭제하였습니다. :)</string>
+    <string name="comment_remove_failed_msg">댓글 저장에 실패하였습니다! :(</string>
+    <string name="need_to_fb_login">페이스북 로그인이 필요합니다. :o</string>
+    <string name="question_choose_round">라운드</string>
+    <string name="question_choose_type">질문의 형태는?</string>
+    <string name="question_choose_type1">일반 질문</string>
+    <string name="question_choose_type2">공개 질문 (별도 경험치가 쌓임)</string>
+    <string name="question_loading">질문을 불러오고 있습니다. :)</string>
+    <string name="question_any_question">질문을 선택해 주세요. :(</string>
+    <string name="question_not_good">잘못된 질문입니다. :(</string>
+    <string name="question_not_enough_photo">라운드수 보다 이미지가 적습니다.</string>
+    <string name="question_fregist_popup_msg">질문을 만드시기 위해서는 최소 한개의 질문이 필요합니다. :)</string>
+    <string name="question_out">저장되지 않은 모든 월드컵 정보는 삭제 됩니다. 질문에 있는 체크 버튼을 누르셔서 저장이 됐는지 확인해 보세요. 메인 화면으로 이동하시겠습니까?</string>
+    <!--
+    <string name="question_first_msg1">처음으로.. 좌측 상단에 Round 을 골라보세요. 4강부터 32강까지 가능합니다. 단 4강일 경우 최소 4개의 이미지를 등록하셔야 하고 8강일경우 8개의 이미지를 등록하셔야 합니다. </string>
+    <string name="question_first_msg2">두번째로.. 좌측 상단에 Type을 선택하실 수 있습니다. 일반 질문은 친구들과 공유가 가능하고 공개 질문은 사용자 모두에게 공개가 됩니다.</string>
+    <string name="question_first_msg3">세번째로.. 좌측에 빈 이미지 공간을 터치하여 이미지를 업로드 하세요. 업로드한 이미지는 계속 유지 되며 사용자가 선택을 하게 되면 우측에 선택되어 있는 질문에 등록이 되게 됩니다. </string>
+    <string name="question_first_msg4">네번째로.. 질문을 수정하실 경우에는 우측에 있는 연필모양을 터치하세요</string>
+    <string name="question_first_msg5">마지막 단계 입니다~ 우측에 선택되어 있는 질문에 있는 체크 표시를 터치하세요. 라운드와 이미지가 일치하면 이미지 월드컵이 시작 됩니다.</string>
+    <string name="question_first_msg6">질문을 삭제하시고 싶으시면 우측에 선택되어 있는 질문에 X표시를 터치하세요. 그럼 건투를 빕니다. :)</string>
+    -->
+        <!-- Help Messages -->
+    <string name="h1_1">1. 월드컵 제목을 입력하세요. 이 제목에 이미지를 등록하여 월드컵을 완성해 가실 수 있습니다.</string>
+    <string name="h1_2">1. 월드컵 제목을 입력하세요</string>
+    <string name="h1_3">1. 우측 상단에서 생성한 제목을 확인하실 수 있습니다.</string>
+    <string name="h2_1">2. 토너먼트 라운드를 설정해 보세요. 4강부터 최대 32강까지 즐기실 수 있습니다.</string>
+    <string name="h2_2">3. 공개 월드컵인지 일반 월드컵인지 선택해 주세요. 일반 월드컵은 친구들에게만 공개 됩니다. 공개 월드컵은 아시겠죠? ^^</string>
+    <string name="h3_1">4. 비어있는 이미지 슬롯을 터치해서 이미지를 업로드 해보세요.</string>
+    <string name="h3_2">4. 비어있는 이미지 슬롯을 터치해서 이미지를 업로드 해보세요.</string>
+    <string name="h3_3">5. 월드컵에 포함될 이미지를 선택해 보세요. </string>
+    <string name="h3_4">6. 이미지를 삭제하시려면 이미지 슬롯을 살포시 눌러주시면 됩니다.! </string>
+    <string name="h4_1">7. 만들었던 월드컵도 삭제가 가능합니다. 주의 하세요! 모든 랭킹 데이터가 날아갑니다. </string>
+    <string name="h4_2">8. 다른 월드컵을 만드실 수도 있어요! </string>
+    <string name="h4_3">8. 자~ 끝났습니다. 이제 확인 버튼으로 저장하시면 됩니다. 행운을 빕니다. :)</string>
+    <string name="h5_1">9. 이미지 슬롯을 늘이기 위해서는 레벨업이 필요합니다. 다른 친구들 월드컵에 참여해 보세요.</string>
+    
+    <string name="question_regist_popup_msg">나만의 질문을 만들어 보세요 :)</string>
+    <string name="question_modify_msg1">질문 정보를 저장하였습니다. :)</string>
+    <string name="question_modify_msg2">질문 정보를 저장하였습니다. 하지만 사진이 모자라네요. 사진을 업로드 하시고 체크 박스를 체크하셔야 월드컵 후보가 될 수 있습니다. :o</string>
+    <string name="question_type_warning">레벨이 40이상이어야 공개 질문을 할 수 있습니다. :o</string>
+    <string name="confirm_remove_question">질문을 삭제하시겠습니까? 질문과 관련된 모든 정보가 사라집니다. 단 이미지는 남아있습니다.</string>
+    <string name="network_error">네트워크 에러가 발생했어요 :(</string>
+    <string name="q_img_type_error">이미지 형태가 이상해요. 다른것으로 시도해 주세요 :( </string>
+    <string name="q_img_upload_success">이미지가 업로드 되었습니다 :) </string>
+    <string name="rank_noqlist_msg">질문 데이터가 없네요 :( </string>
+    <string name="image_uploading">이미지를 올리는 중이에요 :)</string>
+    <string name="warning_remove_img_msg">이미지와 관련된 질문과 댓글이 삭제 됩니다. :o</string>
+    <string name="confirm_msg">확인</string>
+    <string name="cancle_msg">취소</string>
+    <string name="select_your_question">질문 형태를 선택해 주세요.</string>
+    <string name="type_all">전체보기</string>
+    <string name="type_public">공개 질문</string>
+    <string name="type_friend">친구들 질문</string>
+    <string name="type_me">내 질문</string>
+
+</resources>
